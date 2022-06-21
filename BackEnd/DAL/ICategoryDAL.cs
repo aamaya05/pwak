@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd.DAL
 {
-    public interface ICategoryDAL: IDALGenerico<Category>
+    public interface ICategoryDAL : IDALGenerico<Category>
     {
        
     }
