@@ -8,23 +8,22 @@ using System.Threading.Tasks;
 
 namespace BackEnd.DAL
 {
-    public class CategoryDALImpl : ICategoryDAL
-    {
-        PWAKContext context;
+    public class ClienteDALImpl : IClienteDAL
 
-        public CategoryDALImpl()
+    {
+
+        PWAKContext context;
+        public ClienteDALImpl()
         {
             context = new PWAKContext();
-
         }
 
-        public bool Add(Category entity)
+        public bool Add(Cliente entity)
         {
             try
             {
-                //sumar o calcular 
-
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
                     unidad.genericDAL.Add(entity);
                     return unidad.Complete();
@@ -38,26 +37,26 @@ namespace BackEnd.DAL
             }
         }
 
-        public void AddRange(IEnumerable<Category> entities)
+        public void AddRange(IEnumerable<Cliente> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Category> Find(Expression<Func<Category, bool>> predicate)
+        public IEnumerable<Cliente> Find(Expression<Func<Cliente, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Category Get(int CategoryId)
+        public Cliente Get(int Clienteid)
         {
             try
             {
-                Category category;
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                Cliente cliente;
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
-                    category = unidad.genericDAL.Get(CategoryId);
+                    cliente = unidad.genericDAL.Get(Clienteid);
                 }
-                return category;
+                return cliente;
             }
             catch (Exception)
             {
@@ -66,16 +65,16 @@ namespace BackEnd.DAL
             }
         }
 
-        public List<Category> Get()
+        public List<Cliente> Get()
         {
             try
             {
-                IEnumerable<Category> categories;
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                IEnumerable<Cliente> clientes;
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
-                    categories = unidad.genericDAL.GetAll();
+                    clientes = unidad.genericDAL.GetAll();
                 }
-                return categories.ToList();
+                return clientes.ToList();
             }
             catch (Exception)
             {
@@ -84,16 +83,16 @@ namespace BackEnd.DAL
             }
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<Cliente> GetAll()
         {
             try
             {
-                IEnumerable<Category> categories;
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                IEnumerable<Cliente> clientes;
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
-                    categories = unidad.genericDAL.GetAll();
+                    clientes = unidad.genericDAL.GetAll();
                 }
-                return categories;
+                return clientes; 
             }
             catch (Exception)
             {
@@ -102,12 +101,12 @@ namespace BackEnd.DAL
             }
         }
 
-        public bool Remove(Category entity)
+        public bool Remove(Cliente entity)
         {
             bool result = false;
             try
             {
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
                     unidad.genericDAL.Remove(entity);
                     result = unidad.Complete();
@@ -123,25 +122,25 @@ namespace BackEnd.DAL
             return result;
         }
 
-        public void RemoveRange(IEnumerable<Category> entities)
+        public void RemoveRange(IEnumerable<Cliente> entities)
         {
             throw new NotImplementedException();
         }
 
-        public Category SingleOrDefault(Expression<Func<Category, bool>> predicate)
+        public Cliente SingleOrDefault(Expression<Func<Cliente, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Category category)
+        public bool Update(Cliente cliente)
         {
             bool result = false;
 
             try
             {
-                using (UnidadDeTrabajo<Category> unidad = new UnidadDeTrabajo<Category>(context))
+                using (UnidadDeTrabajo<Cliente> unidad = new UnidadDeTrabajo<Cliente>(context))
                 {
-                    unidad.genericDAL.Update(category);
+                    unidad.genericDAL.Update(cliente);
                     result = unidad.Complete();
                 }
 
