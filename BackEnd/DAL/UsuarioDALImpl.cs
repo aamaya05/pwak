@@ -1,4 +1,5 @@
 ﻿
+using BackEnd.Entities;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -6,6 +7,12 @@ namespace BackEnd.DAL
 {
     public class UsuarioDALImpl : IUsuarioDAL
     {
+        PWAKContext context;
+        public UsuarioDALImpl()
+        {
+            context = new PWAKContext();
+        }
+
         bool IDALGenerico<Usuario>.Add(Usuario entity)
         {
             throw new NotImplementedException();
