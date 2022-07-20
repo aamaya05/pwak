@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace BackEnd.DAL
 {
-    public class UsuarioDALImpl : IUsuarioDAL
+    public class EjercicioDALImpl : IEjercicioDAL
     {
         PWAKContext context;
-        public UsuarioDALImpl()
+        public EjercicioDALImpl()
         {
             context = new PWAKContext();
         }
 
-        public bool Add(Usuario entity)
+        public bool Add(Ejercicio entity)
         {
             try
             {
 
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
                 {
                     unidad.genericDAL.Add(entity);
                     return unidad.Complete();
@@ -35,43 +35,26 @@ namespace BackEnd.DAL
             }
         }
 
-        public void AddRange(IEnumerable<Usuario> entities)
+        public void AddRange(IEnumerable<Ejercicio> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Usuario> Find(Expression<Func<Usuario, bool>> predicate)
+        public IEnumerable<Ejercicio> Find(Expression<Func<Ejercicio, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario Get(int Usuarioid)
+        public Ejercicio Get(int Ejercicioid)
         {
             try
             {
-                Usuario usuario;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                Ejercicio ejercicio;
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
                 {
-                    usuario = unidad.genericDAL.Get(Usuarioid);
+                    ejercicio = unidad.genericDAL.Get(Ejercicioid);
                 }
-                return usuario;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public List<Usuario> Get()
-        {
-            try
-            {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
-                {
-                    usuarios = unidad.genericDAL.GetAll();
-                }
-                return usuarios.ToList();
+                return ejercicio;
             }
             catch (Exception)
             {
@@ -80,16 +63,16 @@ namespace BackEnd.DAL
             }
         }
 
-        public IEnumerable<Usuario> GetAll()
+        public List<Ejercicio> Get()
         {
             try
             {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                IEnumerable<Ejercicio> ejercicios;
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
                 {
-                    usuarios = unidad.genericDAL.GetAll();
+                    ejercicios = unidad.genericDAL.GetAll();
                 }
-                return usuarios;
+                return ejercicios.ToList();
             }
             catch (Exception)
             {
@@ -98,12 +81,30 @@ namespace BackEnd.DAL
             }
         }
 
-        public bool Remove(Usuario entity)
+        public IEnumerable<Ejercicio> GetAll()
+        {
+            try
+            {
+                IEnumerable<Ejercicio> ejercicios;
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
+                {
+                    ejercicios = unidad.genericDAL.GetAll();
+                }
+                return ejercicios;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool Remove(Ejercicio entity)
         {
             bool result = false;
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
                 {
                     unidad.genericDAL.Remove(entity);
                     result = unidad.Complete();
@@ -119,25 +120,25 @@ namespace BackEnd.DAL
             return result;
         }
 
-        public void RemoveRange(IEnumerable<Usuario> entities)
+        public void RemoveRange(IEnumerable<Ejercicio> entities)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario SingleOrDefault(Expression<Func<Usuario, bool>> predicate)
+        public Ejercicio SingleOrDefault(Expression<Func<Ejercicio, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Usuario usuario)
+        public bool Update(Ejercicio ejercicio)
         {
             bool result = false;
 
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Ejercicio> unidad = new UnidadDeTrabajo<Ejercicio>(context))
                 {
-                    unidad.genericDAL.Update(usuario);
+                    unidad.genericDAL.Update(ejercicio);
                     result = unidad.Complete();
                 }
 
@@ -151,4 +152,5 @@ namespace BackEnd.DAL
             return result;
         }
     }
+
 }

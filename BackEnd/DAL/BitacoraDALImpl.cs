@@ -8,20 +8,22 @@ using System.Threading.Tasks;
 
 namespace BackEnd.DAL
 {
-    public class UsuarioDALImpl : IUsuarioDAL
+    public class BitacoraDALImpl : IBitacoraDAL
     {
+
         PWAKContext context;
-        public UsuarioDALImpl()
+        public BitacoraDALImpl()
         {
             context = new PWAKContext();
         }
 
-        public bool Add(Usuario entity)
+
+        public bool Add(Bitacora entity)
         {
             try
             {
 
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
                 {
                     unidad.genericDAL.Add(entity);
                     return unidad.Complete();
@@ -35,26 +37,26 @@ namespace BackEnd.DAL
             }
         }
 
-        public void AddRange(IEnumerable<Usuario> entities)
+        public void AddRange(IEnumerable<Bitacora> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Usuario> Find(Expression<Func<Usuario, bool>> predicate)
+        public IEnumerable<Bitacora> Find(Expression<Func<Bitacora, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario Get(int Usuarioid)
+        public Bitacora Get(int Bitacoraid)
         {
             try
             {
-                Usuario usuario;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                Bitacora bitacora;
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
                 {
-                    usuario = unidad.genericDAL.Get(Usuarioid);
+                    bitacora = unidad.genericDAL.Get(Bitacoraid);
                 }
-                return usuario;
+                return bitacora;
             }
             catch (Exception)
             {
@@ -62,34 +64,16 @@ namespace BackEnd.DAL
                 throw;
             }
         }
-        public List<Usuario> Get()
+        public List<Bitacora> Get()
         {
             try
             {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                IEnumerable<Bitacora> bitacoras;
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
                 {
-                    usuarios = unidad.genericDAL.GetAll();
+                    bitacoras = unidad.genericDAL.GetAll();
                 }
-                return usuarios.ToList();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public IEnumerable<Usuario> GetAll()
-        {
-            try
-            {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
-                {
-                    usuarios = unidad.genericDAL.GetAll();
-                }
-                return usuarios;
+                return bitacoras.ToList();
             }
             catch (Exception)
             {
@@ -98,12 +82,32 @@ namespace BackEnd.DAL
             }
         }
 
-        public bool Remove(Usuario entity)
+
+        public IEnumerable<Bitacora> GetAll()
+        {
+            try
+            {
+                IEnumerable<Bitacora> bitacoras;
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
+                {
+                    bitacoras = unidad.genericDAL.GetAll();
+                }
+                return bitacoras;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public bool Remove(Bitacora entity)
         {
             bool result = false;
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
                 {
                     unidad.genericDAL.Remove(entity);
                     result = unidad.Complete();
@@ -119,25 +123,26 @@ namespace BackEnd.DAL
             return result;
         }
 
-        public void RemoveRange(IEnumerable<Usuario> entities)
+
+        public void RemoveRange(IEnumerable<Bitacora> entities)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario SingleOrDefault(Expression<Func<Usuario, bool>> predicate)
+        public Bitacora SingleOrDefault(Expression<Func<Bitacora, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Usuario usuario)
+        public bool Update(Bitacora bitacora)
         {
             bool result = false;
 
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<Bitacora> unidad = new UnidadDeTrabajo<Bitacora>(context))
                 {
-                    unidad.genericDAL.Update(usuario);
+                    unidad.genericDAL.Update(bitacora);
                     result = unidad.Complete();
                 }
 
@@ -150,5 +155,6 @@ namespace BackEnd.DAL
 
             return result;
         }
+
     }
 }
