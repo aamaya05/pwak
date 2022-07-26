@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BackEnd.DAL
 {
-    internal interface IUsuarioDAL : IDALGenerico<Usuario>
+    public interface IUsuarioDAL : IDALGenerico<Usuario>
 
     {
         

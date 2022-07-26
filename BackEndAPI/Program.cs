@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PWAKContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 string connString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<PWAKContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AlessandroTest")));
+//string connString = builder.Configuration.GetConnectionString("AlessandroTest");
 Util.ConnectionString = connString;
 
 builder.Services.AddControllers();
