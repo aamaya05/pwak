@@ -61,17 +61,14 @@ namespace ClienteAPI.Controllers
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
-            catch (HttpRequestException
-          )
+            catch (HttpRequestException)
             {
                 return RedirectToAction("Error", "Home");
             }
 
-            catch (Exception
-            )
+            catch (Exception)
             {
-
-                throw;
+             throw;
             }
         }
 
