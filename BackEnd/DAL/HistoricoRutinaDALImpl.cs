@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace BackEnd.DAL
 {
-    public class UsuarioDALImpl : IUsuarioDAL
+    public class HistoricoRutinaDALImpl : IHistoricoRutinaDAL
     {
         PWAKContext context;
-        public UsuarioDALImpl()
+        public HistoricoRutinaDALImpl()
         {
             context = new PWAKContext();
         }
 
-        public bool Add(Usuario entity)
+        public bool Add(HistoricoRutina entity)
         {
             try
             {
 
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
                 {
                     unidad.genericDAL.Add(entity);
                     return unidad.Complete();
@@ -35,43 +35,26 @@ namespace BackEnd.DAL
             }
         }
 
-        public void AddRange(IEnumerable<Usuario> entities)
+        public void AddRange(IEnumerable<HistoricoRutina> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Usuario> Find(Expression<Func<Usuario, bool>> predicate)
+        public IEnumerable<HistoricoRutina> Find(Expression<Func<HistoricoRutina, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario Get(int Usuarioid)
+        public HistoricoRutina Get(int HistoricoRutinaid)
         {
             try
             {
-                Usuario usuario;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                HistoricoRutina historicorutina;
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
                 {
-                    usuario = unidad.genericDAL.Get(Usuarioid);
+                    historicorutina = unidad.genericDAL.Get(HistoricoRutinaid);
                 }
-                return usuario;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public List<Usuario> Get()
-        {
-            try
-            {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
-                {
-                    usuarios = unidad.genericDAL.GetAll();
-                }
-                return usuarios.ToList();
+                return historicorutina;
             }
             catch (Exception)
             {
@@ -80,16 +63,16 @@ namespace BackEnd.DAL
             }
         }
 
-        public IEnumerable<Usuario> GetAll()
+        public List<HistoricoRutina> Get()
         {
             try
             {
-                IEnumerable<Usuario> usuarios;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                IEnumerable<HistoricoRutina> historicorutinas;
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
                 {
-                    usuarios = unidad.genericDAL.GetAll();
+                    historicorutinas = unidad.genericDAL.GetAll();
                 }
-                return usuarios;
+                return historicorutinas.ToList();
             }
             catch (Exception)
             {
@@ -98,12 +81,30 @@ namespace BackEnd.DAL
             }
         }
 
-        public bool Remove(Usuario entity)
+        public IEnumerable<HistoricoRutina> GetAll()
+        {
+            try
+            {
+                IEnumerable<HistoricoRutina> historicorutinas;
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
+                {
+                    historicorutinas = unidad.genericDAL.GetAll();
+                }
+                return historicorutinas;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool Remove(HistoricoRutina entity)
         {
             bool result = false;
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
                 {
                     unidad.genericDAL.Remove(entity);
                     result = unidad.Complete();
@@ -119,25 +120,25 @@ namespace BackEnd.DAL
             return result;
         }
 
-        public void RemoveRange(IEnumerable<Usuario> entities)
+        public void RemoveRange(IEnumerable<HistoricoRutina> entities)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario SingleOrDefault(Expression<Func<Usuario, bool>> predicate)
+        public HistoricoRutina SingleOrDefault(Expression<Func<HistoricoRutina, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Usuario usuario)
+        public bool Update(HistoricoRutina historicorutina)
         {
             bool result = false;
 
             try
             {
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+                using (UnidadDeTrabajo<HistoricoRutina> unidad = new UnidadDeTrabajo<HistoricoRutina>(context))
                 {
-                    unidad.genericDAL.Update(usuario);
+                    unidad.genericDAL.Update(historicorutina);
                     result = unidad.Complete();
                 }
 
@@ -152,3 +153,4 @@ namespace BackEnd.DAL
         }
     }
 }
+
