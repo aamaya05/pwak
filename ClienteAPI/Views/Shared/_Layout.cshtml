@@ -2,48 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ClienteAPI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ClienteAPI.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>@ViewData["Title"] - Energym</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css.map" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/FrontEnd.styles.css" asp-append-version="true" />
+   <!-- fevicon -->
+   <link rel="icon" href="~/images/fevicon.png" type="image/gif" />
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- Scrollbar -->
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css" asp-append-version="true" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ClienteAPI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+ <!-- header section start -->
+   <div class="header_section">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="logo"><a href=""><img src="./images/logo1.png"></a></div>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="">Inicio</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="">Nosotros</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="">Nutricion</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="">Noticias</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="">Contactenos</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="">Iniciar sesion</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+      </div>
+      <!-- header section end -->
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
             @RenderBody()
-        </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ClienteAPI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+       <!-- footer section start -->
+   <div class="footer_section layout_padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-3 col-sm-6">
+               <div class="footer_logo"><a href=""><img src="./images/footer-logo.png"></a></div>
+               <h1 class="adderss_text">Contactenos</h1>
+               <div class="map_icon"><img src="images/call-icon.png"><span class="paddlin_left_0">+506xxxxxxx</span></div>
+               <div class="map_icon"><img src="images/mail-icon.png"><span class="paddlin_left_0">energym@mail.com</span></div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h1 class="adderss_text">Instructores</h1>
+               <div class="hiphop_text_1">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h1 class="adderss_text">Links de ayuda</h1>
+               <div class="Useful_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered ,</div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+               <h1 class="adderss_text">Noticias</h1>
+               <input type="text" class="Enter_text" placeholder="Enter your Emil" name="Enter your Email">
+               <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+               <div class="social_icon">
+                  <ul>
+                     <li><a href="#"><img src="images/fb-icon.png"></a></li>
+                     <li><a href="#"><img src="images/instagram-icon.png"></a></li>
+                     <li><a href="#"><img src="images/map-icon.png"></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- footer section end -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/jquery-3.0.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/plugin.js"></script>
+    <script src="~/lib/bootstrap/dist/js/modernizer.js"></script>
+   <!-- sidebar -->
+   <script src="~/lib/bootstrap/dist/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="~/lib/bootstrap/dist/js/custom.js"></script>
+   <script src="~/lib/bootstrap/dist/js/slider-setting.js"></script>
+   <!-- javascript -->
+   <script src="~/lib/bootstrap/dist/js/owl.carousel.js"></script>
+   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
