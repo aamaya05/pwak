@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <title>@ViewData["Title"] - Energym</title>
+    <title>@ViewData["Title"] Energym</title>
     <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css.map" asp-append-version="true" />
@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/owl.theme.default.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/FrontEnd.styles.css" asp-append-version="true" />
+    <link href="~/images/" type="image/"/>
+
    <!-- fevicon -->
-   <link rel="icon" href="~/images/fevicon.png" type="image/gif" />
+   <link rel="icon" href="~/images/fevicon.png" type="image/gif"/>
    <!-- Tweaks for older IEs-->
    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- Scrollbar -->
@@ -32,16 +34,16 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link" href="">Inicio</a>
+                  <a class="nav-link" href="/Home/Index">Inicio</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="">Nosotros</a>
+                  <a class="nav-link" href="/Home/Nosotros">Nosotros</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="">Nutricion</a>
+                  <a class="nav-link" href="/Home/Nutricion">Nutricion</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="">Noticias</a>
+                  <a class="nav-link" href="/Home/Noticias">Noticias</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="">Contactenos</a>
@@ -50,7 +52,7 @@
                   <a class="nav-link" href="">Iniciar sesion</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                  <a class="nav-link" href="#"><img src="./images/search-icon.png"></a>
                </li>
             </ul>
          </div>
@@ -68,8 +70,8 @@
             <div class="col-lg-3 col-sm-6">
                <div class="footer_logo"><a href=""><img src="./images/footer-logo.png"></a></div>
                <h1 class="adderss_text">Contactenos</h1>
-               <div class="map_icon"><img src="images/call-icon.png"><span class="paddlin_left_0">+506xxxxxxx</span></div>
-               <div class="map_icon"><img src="images/mail-icon.png"><span class="paddlin_left_0">energym@mail.com</span></div>
+               <div class="map_icon"><img src="/images/call-icon.png"><span class="paddlin_left_0">+506xxxxxxx</span></div>
+               <div class="map_icon"><img src="/images/mail-icon.png"><span class="paddlin_left_0">energym@mail.com</span></div>
             </div>
             <div class="col-lg-3 col-sm-6">
                <h1 class="adderss_text">Instructores</h1>
@@ -85,9 +87,9 @@
                <div class="subscribe_bt"><a href="#">Subscribe</a></div>
                <div class="social_icon">
                   <ul>
-                     <li><a href="#"><img src="images/fb-icon.png"></a></li>
-                     <li><a href="#"><img src="images/instagram-icon.png"></a></li>
-                     <li><a href="#"><img src="images/map-icon.png"></a></li>
+                     <li><a href="#"><img src="/images/fb-icon.png"></a></li>
+                     <li><a href="#"><img src="/images/instagram-icon.png"></a></li>
+                     <li><a href="#"><img src="/images/map-icon.png"></a></li>
                   </ul>
                </div>
             </div>

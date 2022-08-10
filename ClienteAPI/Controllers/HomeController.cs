@@ -17,7 +17,19 @@ namespace ClienteAPI.Controllers
         {
             return View();
         }
+        public IActionResult Noticias()
+        {
+            return View();
+        }
+        public IActionResult Nosotros()
+        {
+            return View();
+        }
 
+        public IActionResult Nutricion()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
