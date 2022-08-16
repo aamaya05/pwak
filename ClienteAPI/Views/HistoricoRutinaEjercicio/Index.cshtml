@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ClienteAPI.Models.HistoricoRutinaEjercicioViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHisRutEjer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHistRutina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEjercicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repeticiones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Series)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descanso)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHisRutEjer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHistRutina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEjercicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repeticiones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Series)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descanso)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.IdHisRutEjer  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.IdHisRutEjer  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.IdHisRutEjer  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

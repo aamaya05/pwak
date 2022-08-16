@@ -1,12 +1,22 @@
-﻿using ClienteAPI.Helpers;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ClienteAPI.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using BackEnd.DAL;
+
+
 
 namespace ClienteAPI.Controllers
 {
-    public class ClienteController : Controller
+    public class EjercicioController : Controller
     {
-        // GET: ClienteController
+
+
+        // GET: EjercicioController
         public ActionResult Index()
         {
             try
@@ -15,10 +25,10 @@ namespace ClienteAPI.Controllers
                 HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
                 response.EnsureSuccessStatusCode();
                 var content = response.Content.ReadAsStringAsync().Result;
-                List<Models.ClienteViewModel> clientes = JsonConvert.DeserializeObject<List<Models.ClienteViewModel>>(content);
+                List<Models.EjercicioViewModel> ejercicios = JsonConvert.DeserializeObject<List<Models.EjercicioViewModel>>(content);
 
-                ViewBag.Title = "Todos los clientes";
-                return View(clientes);
+                ViewBag.Title = "Todos los ejercicios";
+                return View(ejercicios);
             }
             catch (Exception)
             {
@@ -26,7 +36,7 @@ namespace ClienteAPI.Controllers
             }
         }
 
-        // GET: ClienteController/Details/5
+        // GET:EjercicioController/Details/5
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -35,29 +45,29 @@ namespace ClienteAPI.Controllers
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.ClienteViewModel clienteViewModel = response.Content.ReadAsAsync<Models.ClienteViewModel>().Result;
-            
-            return View(clienteViewModel);
+            Models.EjercicioViewModel ejercicioViewModel  = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
+
+            return View(ejercicioViewModel);
         }
 
 
 
-        // GET: ClienteController/Create
+        // GET: EjercicioController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ClienteController/Create
+        // POST: EjercicioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Models.ClienteViewModel cliente, List<IFormFile> upload)
+        public ActionResult Create(Models.EjercicioViewModel ejercicio, List<IFormFile> upload)
         {
             try
             {
 
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", cliente);
+                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", ejercicio);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
@@ -68,34 +78,34 @@ namespace ClienteAPI.Controllers
 
             catch (Exception)
             {
-             throw;
+                throw;
             }
         }
 
-        // GET: ClienteController/Edit/5
+        // GET: EjercicioController/Edit/5
+
         public ActionResult Edit(int id)
         {
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.ClienteViewModel clienteViewModel = response.Content.ReadAsAsync<Models.ClienteViewModel>().Result;
+            Models.EjercicioViewModel ejercicioViewModel = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
             //ViewBag.Title = "All Products";
-            return View(clienteViewModel);
+            return View(ejercicioViewModel);
         }
 
-        // POST: ClienteController/Edit/5
+        // POST:EjercicioController/Edit/5
         [HttpPost]
-
-        public ActionResult Edit(Models.ClienteViewModel cliente, List<IFormFile> upload)
+        public ActionResult Edit(Models.EjercicioViewModel ejercicio, List<IFormFile> upload)
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", cliente);
+            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", ejercicio);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index");
         }
 
-        // GET: ClienteController/Delete/5
+        // GET: EjercicioController/Delete/5
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -104,17 +114,17 @@ namespace ClienteAPI.Controllers
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.ClienteViewModel clienteViewModel = response.Content.ReadAsAsync<Models.ClienteViewModel>().Result;
+            Models.EjercicioViewModel ejercicioViewModel = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
             //ViewBag.Title = "All Products";
-            return View(clienteViewModel);
+            return View(ejercicioViewModel);
         }
 
 
         [HttpPost]
-        public ActionResult Delete(Models.ClienteViewModel category)
+        public ActionResult Delete(Models.EjercicioViewModel category)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdCliente.ToString());
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdEjercicio.ToString());
             response.EnsureSuccessStatusCode();
             bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
 
