@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClienteAPI.Helpers;
+using ClienteAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ClienteAPI.Controllers
 {
@@ -8,13 +11,33 @@ namespace ClienteAPI.Controllers
         // GET: UsuarioController
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                ServiceRepository serviceObj = new ServiceRepository();
+                HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
+                response.EnsureSuccessStatusCode();
+                var content = response.Content.ReadAsStringAsync().Result;
+                List<Models.UsuarioViewModel> usuarios = JsonConvert.DeserializeObject<List<Models.UsuarioViewModel>>(content);
+
+                ViewBag.Title = "Todos los usuarios";
+                return View(usuarios);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         // GET: UsuarioController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            response.EnsureSuccessStatusCode();
+            Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
+
+            return View(usuarioViewModel);
         }
 
         // GET: UsuarioController/Create
@@ -23,60 +46,83 @@ namespace ClienteAPI.Controllers
             return View();
         }
 
-        // POST: UsuarioController/Create
+        // POST: ClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Models.UsuarioViewModel usuario, List<IFormFile> upload)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                ServiceRepository serviceObj = new ServiceRepository();
+                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", usuario);
+                response.EnsureSuccessStatusCode();
+                return RedirectToAction("Index");
             }
-            catch
+            catch (HttpRequestException)
             {
-                return View();
+                return RedirectToAction("Error", "Home");
+            }
+
+            catch (Exception)
+            {
+                throw;
             }
         }
 
-        // GET: UsuarioController/Edit/5
+        // GET: ClienteController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            response.EnsureSuccessStatusCode();
+            Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
+            //ViewBag.Title = "All Products";
+            return View(usuarioViewModel);
         }
 
-        // POST: UsuarioController/Edit/5
+        // POST: ClienteController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+
+        public ActionResult Edit(Models.UsuarioViewModel usuario, List<IFormFile> upload)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", usuario);
+            response.EnsureSuccessStatusCode();
+            return RedirectToAction("Index");
         }
 
-        // GET: UsuarioController/Delete/5
+        // GET: ClienteController/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+
+
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            response.EnsureSuccessStatusCode();
+            Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
+            //ViewBag.Title = "All Products";
+            return View(usuarioViewModel);
         }
 
-        // POST: UsuarioController/Delete/5
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Models.UsuarioViewModel category)
         {
-            try
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdUsuario.ToString());
+            response.EnsureSuccessStatusCode();
+            bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
+
+            if (Eliminado)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                throw new Exception();
             }
         }
     }
