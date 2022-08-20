@@ -1,21 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClienteAPI.Helpers;
+﻿using ClienteAPI.Helpers;
+using ClienteAPI.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using BackEnd.DAL;
-
-
 
 namespace ClienteAPI.Controllers
 {
-    public class EjercicioController : Controller
+    public class RutinaController : Controller
     {
-
-
-        // GET: EjercicioController
+        // GET: RutinaController
         public ActionResult Index()
         {
             try
@@ -24,10 +17,10 @@ namespace ClienteAPI.Controllers
                 HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
                 response.EnsureSuccessStatusCode();
                 var content = response.Content.ReadAsStringAsync().Result;
-                List<Models.EjercicioViewModel> ejercicios = JsonConvert.DeserializeObject<List<Models.EjercicioViewModel>>(content);
+                List<Models.RutinaViewModel> rutinas = JsonConvert.DeserializeObject<List<Models.RutinaViewModel>>(content);
 
                 ViewBag.Title = "Todos los ejercicios";
-                return View(ejercicios);
+                return View(rutinas);
             }
             catch (Exception)
             {
@@ -35,38 +28,34 @@ namespace ClienteAPI.Controllers
             }
         }
 
-        // GET:EjercicioController/Details/5
-        [HttpGet]
+        // GET: RutinaController/Details/5
         public ActionResult Details(int id)
         {
-
 
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.EjercicioViewModel ejercicioViewModel  = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
+            Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
 
-            return View(ejercicioViewModel);
+            return View(rutinaViewModel);
         }
 
-
-
-        // GET: EjercicioController/Create
+        // GET: RutinaController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EjercicioController/Create
+        // POST: RutinaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Models.EjercicioViewModel ejercicio, List<IFormFile> upload)
+        public ActionResult Create(Models.RutinaViewModel rutina, List<IFormFile> upload)
         {
             try
             {
 
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", ejercicio);
+                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", rutina);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
@@ -81,30 +70,29 @@ namespace ClienteAPI.Controllers
             }
         }
 
-        // GET: EjercicioController/Edit/5
-
+        // GET: RutinaController/Edit/5
         public ActionResult Edit(int id)
         {
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.EjercicioViewModel ejercicioViewModel = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
+            Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
             //ViewBag.Title = "All Products";
-            return View(ejercicioViewModel);
+            return View(rutinaViewModel);
         }
 
         // POST:EjercicioController/Edit/5
         [HttpPost]
-        public ActionResult Edit(Models.EjercicioViewModel ejercicio, List<IFormFile> upload)
+        public ActionResult Edit(Models.RutinaViewModel rutina, List<IFormFile> upload)
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", ejercicio);
+            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", rutina);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index");
         }
 
-        // GET: EjercicioController/Delete/5
+        // GET: RutinaController/Delete/5
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -113,17 +101,17 @@ namespace ClienteAPI.Controllers
             ServiceRepository serviceObj = new ServiceRepository();
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
-            Models.EjercicioViewModel ejercicioViewModel = response.Content.ReadAsAsync<Models.EjercicioViewModel>().Result;
+            Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
             //ViewBag.Title = "All Products";
-            return View(ejercicioViewModel);
+            return View(rutinaViewModel);
         }
 
 
         [HttpPost]
-        public ActionResult Delete(Models.EjercicioViewModel category)
+        public ActionResult Delete(Models.RutinaViewModel category)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdEjercicio.ToString());
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdRutina.ToString());
             response.EnsureSuccessStatusCode();
             bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
 
