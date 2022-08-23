@@ -1,60 +1,8 @@
-﻿@model ClienteAPI.Models.UsuarioViewModel
+﻿
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Detalles</h1>
-<div>
-    <h4>Vista de datos del usuario</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdUsuario)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdUsuario)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cedula)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cedula)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdRol)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdRol)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdUsuario }) |
-    <a asp-action="Index">Volver al menu anterior</a>
-</div>
+<h1>Details</h1>
 

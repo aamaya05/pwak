@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Lista de ejercicios</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Crear nuevo ejercicio</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.IdEjercicio  }) |
-                @Html.ActionLink("Detalles", "Details", new {  id=item.IdEjercicio }) 
-                @Html.ActionLink("Eliminar", "Delete", new {  id=item.IdEjercicio })
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdEjercicio  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.IdEjercicio }) 
+                @Html.ActionLink("Delete", "Delete", new {  id=item.IdEjercicio })
             </td>
         </tr>
 }

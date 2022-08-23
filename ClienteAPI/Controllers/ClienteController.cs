@@ -1,4 +1,5 @@
 ﻿using ClienteAPI.Helpers;
+using ClienteAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -25,14 +26,16 @@ namespace ClienteAPI.Controllers
                 throw;
             }
         }
+                
 
-        // GET: ClienteController/Details/5
-        [HttpGet]
+            // GET: ClienteController/Details/5
+            [HttpGet]
         public ActionResult Details(int id)
         {
 
+            string accessToken = HttpContext.Session.GetString("JWTToken");
 
-            ServiceRepository serviceObj = new ServiceRepository();
+            ServiceRepository serviceObj = new ServiceRepository(accessToken);
             HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.ClienteViewModel clienteViewModel = response.Content.ReadAsAsync<Models.ClienteViewModel>().Result;

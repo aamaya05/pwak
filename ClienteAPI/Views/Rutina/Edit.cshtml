@@ -1,41 +1,8 @@
-﻿@model ClienteAPI.Models.RutinaViewModel
-
+﻿
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Editar</h1>
+<h1>Edit</h1>
 
-<h4>Editar datos de rutina</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdRutina" class="control-label"></label>
-                <input asp-for="IdRutina" class="form-control" />
-                <span asp-validation-for="IdRutina" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreRutina" class="control-label"></label>
-                <input asp-for="NombreRutina" class="form-control" />
-                <span asp-validation-for="NombreRutina" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Volver al menu anterior</a>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    }

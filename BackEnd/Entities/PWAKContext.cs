@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using BackEnd.Authentication;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BackEnd.Entities
 {
-    public partial class PWAKContext : DbContext
+    public partial class PWAKContext : IdentityDbContext<ApplicationUser>
     {
 
         public PWAKContext()
@@ -31,6 +33,7 @@ namespace BackEnd.Entities
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Utilities.Util.ConnectionString);
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
