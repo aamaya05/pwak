@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClienteAPI.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClienteAPI.Controllers
 {
@@ -6,6 +7,10 @@ namespace ClienteAPI.Controllers
     {
         public IActionResult Index()
         {
+
+            string accessToken = HttpContext.Session.GetString("JWTToken");
+
+            ServiceRepository serviceObj = new ServiceRepository(accessToken);
             return View();
         }
     }
