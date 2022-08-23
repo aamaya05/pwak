@@ -14,7 +14,7 @@ namespace ClienteAPI.Controllers
             try
             {
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
+                HttpResponseMessage response = serviceObj.GetResponse("api/rutina/");
                 response.EnsureSuccessStatusCode();
                 var content = response.Content.ReadAsStringAsync().Result;
                 List<Models.RutinaViewModel> rutinas = JsonConvert.DeserializeObject<List<Models.RutinaViewModel>>(content);
@@ -33,7 +33,7 @@ namespace ClienteAPI.Controllers
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/rutina/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
 
@@ -55,7 +55,7 @@ namespace ClienteAPI.Controllers
             {
 
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", rutina);
+                HttpResponseMessage response = serviceObj.PostResponse("api/rutina", rutina);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
@@ -74,7 +74,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Edit(int id)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/rutina/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -87,7 +87,7 @@ namespace ClienteAPI.Controllers
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", rutina);
+            HttpResponseMessage response = serviceObj.PutResponse("api/rutina", rutina);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index");
         }
@@ -99,7 +99,7 @@ namespace ClienteAPI.Controllers
 
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/rutina/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.RutinaViewModel rutinaViewModel = response.Content.ReadAsAsync<Models.RutinaViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -111,7 +111,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Delete(Models.RutinaViewModel category)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdRutina.ToString());
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/rutina/" + category.IdRutina.ToString());
             response.EnsureSuccessStatusCode();
             bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
 
