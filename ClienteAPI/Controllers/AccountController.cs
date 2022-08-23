@@ -33,7 +33,7 @@ namespace ClienteAPI.Controllers
 
                 HttpContext.Session.SetString("JWTToken", token);
 
-                return RedirectToAction("index", "home");
+                return RedirectToAction("Index", "HomeADM");
 
             }
             ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
