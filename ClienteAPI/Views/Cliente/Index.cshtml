@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Lista de clientes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear un nuevo cliente</a>
 </p>
 <table class="table">
     <thead>
@@ -62,9 +62,9 @@
                 @Html.DisplayFor(modelItem => item.IdRol)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdCliente }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdCliente }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdCliente })
+                @Html.ActionLink("Editar", "Edit", new { id=item.IdCliente }) |
+                @Html.ActionLink("Detalles", "Details", new { id=item.IdCliente }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCliente })
             </td>
         </tr>
 }

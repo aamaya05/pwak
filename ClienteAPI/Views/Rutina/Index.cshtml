@@ -1,8 +1,43 @@
-﻿
+﻿@model IEnumerable<ClienteAPI.Models.RutinaViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Lista de rutinas</h1>
+
+<p>
+    <a asp-action="Create">Crear nueva rutina</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRutina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreRutina)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdRutina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreRutina)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.IdRutina  }) |
+                    @Html.ActionLink("Detalles", "Details", new {  id=item.IdRutina })
+                    @Html.ActionLink("Eliminar", "Delete", new {  id=item.IdRutina })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 

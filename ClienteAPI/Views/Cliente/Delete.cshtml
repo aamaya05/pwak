@@ -1,4 +1,4 @@
-﻿@model ClienteAPI.Models.UsuarioViewModel
+﻿@model ClienteAPI.Models.ClienteViewModel
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdUsuario)
+            @Html.DisplayNameFor(model => model.IdCliente)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdUsuario)
+            @Html.DisplayFor(model => model.IdCliente)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
@@ -29,7 +29,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Apellido1)
         </dd>
-                <dt class="col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Apellido2)
         </dt>
         <dd class="col-sm-10">
@@ -42,3 +42,4 @@
         <a asp-action="Index">Volver al menu anterior</a>
     </form>
 </div>
+
