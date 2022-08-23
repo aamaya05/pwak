@@ -54,11 +54,10 @@ namespace ClienteAPI.Controllers
         // POST: ClienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Models.ClienteViewModel cliente, List<IFormFile> upload)
+        public ActionResult Create(Models.ClienteViewModel cliente)
         {
             try
             {
-
                 ServiceRepository serviceObj = new ServiceRepository();
                 HttpResponseMessage response = serviceObj.PostResponse("api/cliente", cliente);
                 response.EnsureSuccessStatusCode();
