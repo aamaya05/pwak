@@ -16,7 +16,7 @@ namespace ClienteAPI.Controllers
             try
             {
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.GetResponse("api/historicorutinaejercicio/");
+                HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
                 response.EnsureSuccessStatusCode();
                 var content = response.Content.ReadAsStringAsync().Result;
                 List<Models.HistoricoRutinaEjercicioViewModel> historicoRutinaEjercicios = JsonConvert.DeserializeObject<List<Models.HistoricoRutinaEjercicioViewModel>>(content);
@@ -37,7 +37,7 @@ namespace ClienteAPI.Controllers
 
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/historicorutinaejercicio/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.HistoricoRutinaEjercicioViewModel historicoRutinaEjercicioViewModel = response.Content.ReadAsAsync<Models.HistoricoRutinaEjercicioViewModel>().Result;
 
@@ -61,7 +61,7 @@ namespace ClienteAPI.Controllers
             {
 
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.PostResponse("api/historicorutinaejercicio", historicoRutinaEjercicios);
+                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", historicoRutinaEjercicios);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
@@ -81,7 +81,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Edit(int id)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/historicorutinaejercicio/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.HistoricoRutinaEjercicioViewModel historicoRutinaEjercicioViewModel = response.Content.ReadAsAsync<Models.HistoricoRutinaEjercicioViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -94,7 +94,7 @@ namespace ClienteAPI.Controllers
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.PutResponse("api/historicorutinaejercicio", historicoRutinaEjercicioViewModel);
+            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", historicoRutinaEjercicioViewModel);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index");
         }
@@ -106,7 +106,7 @@ namespace ClienteAPI.Controllers
 
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/historicorutinaejercicio/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.HistoricoRutinaEjercicioViewModel historicoRutinaEjercicioViewModel = response.Content.ReadAsAsync<Models.HistoricoRutinaEjercicioViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -118,7 +118,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Delete(Models.HistoricoRutinaEjercicioViewModel category)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.DeleteResponse("api/historicorutinaejercicio/" + category.IdHisRutEjer.ToString());
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdHisRutEjer.ToString());
             response.EnsureSuccessStatusCode();
             bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
 

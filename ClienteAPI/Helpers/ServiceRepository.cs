@@ -13,8 +13,16 @@ namespace ClienteAPI.Helpers
         public ServiceRepository()
         {
             Client = new HttpClient();
-            Client.BaseAddress = new Uri("http://localhost:5192/");
+            Client.BaseAddress = new Uri("http://localhost:5174/");
            
+        }
+
+        public ServiceRepository(string Token)
+        {
+            Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:5174/");
+            Client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+
         }
         public HttpResponseMessage GetResponse(string url)
         {

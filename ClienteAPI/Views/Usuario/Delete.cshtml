@@ -1,44 +1,8 @@
-﻿@model ClienteAPI.Models.UsuarioViewModel
+﻿
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout_adm.cshtml";
 }
 
-<h1>Eliminar</h1>
+<h1>Delete</h1>
 
-<h3>Seguro de eliminar?</h3>
-<div>
-    <h4>EjercicioViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdUsuario)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdUsuario)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido1)
-        </dd>
-                <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido2)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver al menu anterior</a>
-    </form>
-</div>

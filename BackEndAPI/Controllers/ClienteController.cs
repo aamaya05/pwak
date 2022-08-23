@@ -1,12 +1,14 @@
 ﻿using BackEnd.DAL;
 using BackEnd.Entities;
 using BackEndAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BackEndAPI.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class ClienteController : ControllerBase
@@ -65,6 +67,7 @@ namespace BackEndAPI.Controllers
             return new JsonResult(result);
         }
 
+        [Authorize]
         // GET api/<ClienteController>/5
         [HttpGet("{id}")]
         public JsonResult Get(int id)

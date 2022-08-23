@@ -14,7 +14,7 @@ namespace ClienteAPI.Controllers
             try
             {
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.GetResponse("api/usuario/");
+                HttpResponseMessage response = serviceObj.GetResponse("api/cliente/");
                 response.EnsureSuccessStatusCode();
                 var content = response.Content.ReadAsStringAsync().Result;
                 List<Models.UsuarioViewModel> usuarios = JsonConvert.DeserializeObject<List<Models.UsuarioViewModel>>(content);
@@ -33,7 +33,7 @@ namespace ClienteAPI.Controllers
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/usuario/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
 
@@ -55,7 +55,7 @@ namespace ClienteAPI.Controllers
             {
 
                 ServiceRepository serviceObj = new ServiceRepository();
-                HttpResponseMessage response = serviceObj.PostResponse("api/usuario", usuario);
+                HttpResponseMessage response = serviceObj.PostResponse("api/cliente", usuario);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Index");
             }
@@ -74,7 +74,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Edit(int id)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/usuario/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -88,7 +88,7 @@ namespace ClienteAPI.Controllers
         {
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.PutResponse("api/usuario", usuario);
+            HttpResponseMessage response = serviceObj.PutResponse("api/cliente", usuario);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index");
         }
@@ -100,7 +100,7 @@ namespace ClienteAPI.Controllers
 
 
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.GetResponse("api/usuario/" + id.ToString());
+            HttpResponseMessage response = serviceObj.GetResponse("api/cliente/" + id.ToString());
             response.EnsureSuccessStatusCode();
             Models.UsuarioViewModel usuarioViewModel = response.Content.ReadAsAsync<Models.UsuarioViewModel>().Result;
             //ViewBag.Title = "All Products";
@@ -112,7 +112,7 @@ namespace ClienteAPI.Controllers
         public ActionResult Delete(Models.UsuarioViewModel category)
         {
             ServiceRepository serviceObj = new ServiceRepository();
-            HttpResponseMessage response = serviceObj.DeleteResponse("api/usuario/" + category.IdUsuario.ToString());
+            HttpResponseMessage response = serviceObj.DeleteResponse("api/cliente/" + category.IdUsuario.ToString());
             response.EnsureSuccessStatusCode();
             bool Eliminado = response.Content.ReadAsAsync<bool>().Result;
 
